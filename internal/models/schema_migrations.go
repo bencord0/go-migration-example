@@ -15,11 +15,11 @@ func SchemaMigrationsModel(db *Database) *SchemaMigrations {
 }
 
 type SchemaMigration struct {
-	Version int `json:"version"`
+	Version uint `json:"version"`
 	Dirty bool `json:"dirty"`
 }
 
-func (sms *SchemaMigrations) List() ([]SchemaMigration, error) {
+func (sms *SchemaMigrations) CurrentVersion() (SchemaMigration, error) {
 	q := sms.sql.
 		Select("version", "dirty").
 		From("schema_migrations").
@@ -27,24 +27,21 @@ func (sms *SchemaMigrations) List() ([]SchemaMigration, error) {
 
 	rows, err := q.Query()
 	if err != nil {
-		return []SchemaMigration{}, err
+		return SchemaMigration{}, err
 	}
 	defer rows.Close()
 
-	var migrations []SchemaMigration
+	var migration SchemaMigration
 	for rows.Next() {
-		var migration SchemaMigration
 		err = rows.Scan(
 			&migration.Version,
 			&migration.Dirty,
 		)
 
 		if err != nil {
-			return []SchemaMigration{}, err
+			return SchemaMigration{}, err
 		}
-
-		migrations = append(migrations, migration)
 	}
 
-	return migrations, nil
+	return migration, nil
 }
