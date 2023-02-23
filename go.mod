@@ -2,12 +2,15 @@ module github.com/bencord0/go-migration-example
 
 go 1.18
 
-require github.com/jackc/pgx/v4 v4.16.0
+require (
+	github.com/Masterminds/squirrel v1.5.2
+	github.com/bencord0/webframework v0.0.0-20191026155443-6429ad775a4a
+	github.com/golang-migrate/migrate/v4 v4.15.1
+	github.com/jackc/pgx/v4 v4.16.0
+	github.com/sirupsen/logrus v1.8.1
+)
 
 require (
-	github.com/Masterminds/squirrel v1.5.2 // indirect
-	github.com/bencord0/webframework v0.0.0-20191026155443-6429ad775a4a // indirect
-	github.com/golang-migrate/migrate/v4 v4.15.1 // indirect
 	github.com/hashicorp/errwrap v1.0.0 // indirect
 	github.com/hashicorp/go-multierror v1.1.0 // indirect
 	github.com/jackc/chunkreader/v2 v2.0.1 // indirect
@@ -20,9 +23,8 @@ require (
 	github.com/lann/builder v0.0.0-20180802200727-47ae307949d0 // indirect
 	github.com/lann/ps v0.0.0-20150810152359-62de8c46ede0 // indirect
 	github.com/lib/pq v1.10.2 // indirect
-	github.com/sirupsen/logrus v1.8.1 // indirect
 	go.uber.org/atomic v1.6.0 // indirect
 	golang.org/x/crypto v0.0.0-20210921155107-089bfa567519 // indirect
-	golang.org/x/sys v0.0.0-20211013075003-97ac67df715c // indirect
-	golang.org/x/text v0.3.7 // indirect
+	golang.org/x/sys v0.0.0-20220722155257-8c9f86f7a55f // indirect
+	golang.org/x/text v0.3.8 // indirect
 )
